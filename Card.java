@@ -1,27 +1,27 @@
-package src.gofish_assn;
+package gofish_assn;
 
 public class Card {
 	
 	public enum Suits {club, diamond, heart, spade};
 	
-	static int TOP_RANK = 13; //King
-	static int LOW_RANK = 1; //Ace
+	final static int TOP_RANK = 13; //King
+	final static int LOW_RANK = 1; //Ace
 	
-	int rank;  //1 is an Ace
-	Suits suit;
+	private int rank;  //1 is an Ace
+	private Suits suit;
 	
 	public Card() {
 		rank = 1;
 		suit = Suits.spade;
 	}
 	
+	/**
+	 * @author Ryan McCray
+	 * @param r This integer is the rank
+	 * @param s This char is the first character of the Suit
+	 * @return None, this only sets suit to a Suit
+	 */
 	public Card(int r, char s) {
-		/**
-		 * @author Ryan McCray
-		 * @param r This integer is the rank
-		 * @param s This char is the first character of the Suit
-		 * @return None, this only sets suit to a Suit
-		 */
 		rank = r;
 		if(s == 's') {
 			suit = Suits.spade;
@@ -100,6 +100,9 @@ public class Card {
 	
 	public int getRank() {
 		return rank;
+	}
+	public String getRankToString() {
+		return rankToString(getRank());
 	}
 	
 	public Suits getSuit() {
