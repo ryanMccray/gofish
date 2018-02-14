@@ -5,6 +5,9 @@ package gofish_assn;
 public class Main {
 	
 	public static void main(String args[]) {
+		/**
+		 * @return None, it's a void main.
+		 */
 		System.out.println("Hello World!");
 		
 		Card c = new Card(4, 'c');
@@ -36,6 +39,8 @@ public class Main {
 		System.out.println(game.p2.bookToString());
 		game.playGame();
 		game.mainDeck.printDeck();
+		game.p1.bookToString();
+		game.p2.bookToString();
 		
 	}
 

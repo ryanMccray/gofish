@@ -1,6 +1,14 @@
 package gofish_assn;
 
 public class Card {
+	/**
+	 * @author rmm3989 
+	 * @param TOP_RANK Int stores value of King, 13.
+	 * @param LOW_RANK Int stores value of Ace, 1.
+	 * @param rank Private int stores value of card.
+	 * @param suit Private object Suit that stores suit of card.
+	 *
+	 */
 	
 	public enum Suits {club, diamond, heart, spade};
 	
@@ -11,17 +19,21 @@ public class Card {
 	private Suits suit;
 	
 	public Card() {
+		/**
+		 * @return None, this is the default constructor. Sets rank to 1 and suit to spade.
+		 */
 		rank = 1;
 		suit = Suits.spade;
 	}
 	
-	/**
-	 * @author Ryan McCray
-	 * @param r This integer is the rank
-	 * @param s This char is the first character of the Suit
-	 * @return None, this only sets suit to a Suit
-	 */
+
 	public Card(int r, char s) {
+		/**
+		 * @param r Int holding the given rank.
+		 * @param s Char holding the given first letter of a suit.
+		 * @return None, this is an assignment constructor *****************
+		 * @see If s does not hold first letter of a suit, defaults to heart.
+		 */
 		rank = r;
 		if(s == 's') {
 			suit = Suits.spade;
@@ -36,11 +48,20 @@ public class Card {
 	}
 	
 	public Card(int r, Suits s) {
+		/**
+		 * @param r Int holding the given rank.
+		 * @param s Suits object holding the given suit.
+		 * @return None, this is an assignment constructor *****************
+		 */
 		rank = r;
 		suit = s;
 	}
 	
 	private Suits toSuit(char c) {
+		/**
+		 * @param c Char holding given first letter of a suit.
+		 * @return The Suits object corresponding to given char, if no match then defaults to heart.
+		 */
 		if(c == 's') {
 			return Suits.spade;
 		}else if(c == 'd') {
@@ -54,6 +75,10 @@ public class Card {
 	
 	private String suitToString(Suits s)
 	{
+		/**
+		 * @param s Suits object holding a suit.
+		 * @return String of the first letter of the given suit.
+		 */
 		
 		if(s == Suits.diamond) {
 			return "d";
@@ -68,6 +93,10 @@ public class Card {
 	
 	private String rankToString(int r)
 	{
+		/**
+		 *@param r Int holding given rank.
+		 *@return String of the corresponding card rank.
+		 */
 		if(r == 13) {
 			return "K";
 		}else if(r == 12) {
@@ -76,7 +105,7 @@ public class Card {
 			return "J";
 		}else if(r == 1) {
 			return "A";
-		}else if(r == 10) {  // is there an easier way to convert ints to strings? there HAS to be
+		}else if(r == 10) {
 			return "10";
 		}else if(r == 9) {  
 			return "9";
@@ -99,17 +128,30 @@ public class Card {
 		
 	
 	public int getRank() {
+		/**
+		 * @return Int rank of card.
+		 */
 		return rank;
 	}
 	public String getRankToString() {
+		/**
+		 * @return String containing card rank.
+		 */
 		return rankToString(getRank());
 	}
 	
 	public Suits getSuit() {
+		/**
+		 * @return Suits object suit of card.
+		 */
 		return suit;
 	}
 	
 	public String toString() {
+		/**
+		 * @param s String created to hold strings of rank and suit.
+		 * @return String containing rank and suit of card.
+		 */
 		String s = "";
 		
 		s = s + rankToString(getRank()) + suitToString(getSuit());

@@ -2,10 +2,19 @@ package gofish_assn;
 import java.io.*;
 
 public class GoFishGame {
+	/**
+	 * @param mainDeck Deck holding the deck of the game, cards not yet used by either Player.
+	 * @param p1 First Player to be interacting with mainDeck.
+	 * @param p2 Second Player to be interacting with mainDeck.
+	 */
 	Deck mainDeck = new Deck();
 	Player p1 = new Player("p1");
 	Player p2 = new Player("p2");
+	
 	public GoFishGame() {
+		/**
+		 * *****************************************************************************
+		 */
 		mainDeck.shuffle();
 		for(int i = 0; i<7;i++) {
 			p1.addCardToHand(mainDeck.dealCard());
@@ -20,6 +29,12 @@ public class GoFishGame {
 		//playGame(); use if they only call our constructor
 	}
 	public void playGame() {
+		/**
+		 * @param output File object to store game results in GoFish_Results.txt
+		 * @param toFile PrintWriter object to fill output with game results
+		 * @param pairs Int holding number of pairs between the two Players
+		 * @return None, this is a void method that fills a text file.
+		 */
 		try {
 			File output = new File("GoFish_Results.txt");
 			PrintWriter toFile = new PrintWriter(output);
@@ -56,6 +71,11 @@ public class GoFishGame {
 		}
 	}
 	public String p1Turn() {
+		/**
+		 * @param s String to hold what conversation from this Player's turn.
+		 * @param checker Card chosen from hand to ask if opponent has ******************english hard
+		 * @return String with conversation of this Player's turn.
+		 */
 		String s = "";
 		if(p1.getHandSize()==0) {
 			s+= p1.getName()+" has no cards."+ '\n'+ this.draw(p1);
@@ -76,6 +96,11 @@ public class GoFishGame {
 		return s;
 	}
 	public String p2Turn() {
+		/**
+		 * @param s String to hold what conversation from this Player's turn.
+		 * @param checker Card chosen from hand to ask if opponent has ******************english hard
+		 * @return String with conversation of this Player's turn.
+		 */
 		String s = "";
 		if(p2.getHandSize()==0) {
 			s+= p2.getName()+" has no cards."+ '\n'+ this.draw(p2);
@@ -97,6 +122,11 @@ public class GoFishGame {
 	}
 	
 	public String draw(Player p) {
+		/**
+		 * @param s String to hold information of which card Player drew.
+		 * @param nxt Card picked from top of mainDeck
+		 * @return String holding information of which card Player drew.
+		 */
 		String s = "";
 		Card nxt = mainDeck.dealCard();
 		p.addCardToHand(nxt);
@@ -105,6 +135,12 @@ public class GoFishGame {
 	}
 	
 	public String printResults() {
+		/**
+		 * @param s String to hold final information of the game
+		 * @param p1Book Int of how many cards are in p1's book.
+		 * @param p2Book Int of how many cards are in p2's book.
+		 * @return String holding winner status, and info of each Player's books. 
+		 */
 		String s = "";
 		int p1Book = p1.getBookSize();
 		int p2Book = p2.getBookSize();
